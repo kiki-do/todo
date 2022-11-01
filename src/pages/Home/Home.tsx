@@ -1,7 +1,13 @@
 import type { FC } from 'react';
+import { Button } from '../../shared/components/Button/Button';
+import classes from './Home.module.scss';
 
 export const Home: FC = () => {
     return(
-        <div>Home</div>
+        <div className={classes.wrapper}>
+            <h1 className={classes.title}>Welcome to my <b>t</b>odo</h1>
+            <h2 className={classes.subtitle}> List of todos </h2>
+            <Button block={true}> Add todo </Button> 
+        </div>
     );
 };

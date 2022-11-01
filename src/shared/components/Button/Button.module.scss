@@ -1,0 +1,86 @@
+@import 'src/shared/styles';
+
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 5px 15px;
+  background: transparent;
+  border: 1px solid transparent;
+  margin: 0;
+  outline: 0;
+  transition: .3s;
+  
+  .text{
+    flex: 1;
+    font-family: 'Raleway';
+    font-weight: 400;
+  }
+
+  &.small{
+    min-height: 18px;
+    
+    &.text{
+      font-size: 10px;
+    }
+  }
+
+  &.medium{
+    min-height: 28px;
+
+    &.text{
+      font-size: 15px;
+    }
+  }
+
+  &.block{
+    width: 30%;
+  }
+
+  &:disabled{
+    background: grey;
+    cursor: not-allowed;
+
+    .text{
+      color: black;
+    }
+  }
+
+  &:not(:disabled):active{
+    opacity: .5;
+  }
+
+  &.primary{
+    &:not(:disabled){
+      background: white;
+      box-shadow: 4px 4px 10px rgba($color: #000000, $alpha: 0.2);
+
+      .text{
+        color: #20b3c6;
+      }
+
+      &:hover,
+      &.active{
+        box-shadow: 6px 6px 10px rgba($color: #000000, $alpha: 0.4);
+      }
+    }
+  }
+
+    //  &.secondary {
+    //    &:not(:disabled) {
+    //      background: blue;
+  
+    //      .text {
+    //        color: orange;
+    //      }
+  
+    //      &:hover,
+    //      &.active {
+    //        background: orange;
+    //      }
+    //    }
+    //  }
+
+}
