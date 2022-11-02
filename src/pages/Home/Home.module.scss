@@ -1,7 +1,8 @@
 @import './src/shared/styles';
 
 .wrapper{
-
+  position: relative;
+  
   .title, .subtitle{
     text-align: center;
   }
@@ -18,5 +19,16 @@
   .subtitle{
     margin-top: 20px;
     font-size: 20px;
+  }
+
+  /* Пофиксить */
+  .button{
+    position: absolute;
+    left: 70vh;
+    margin-top: 40px;
+  }
+
+  .input{
+    padding-top: 100px;
   }
 }

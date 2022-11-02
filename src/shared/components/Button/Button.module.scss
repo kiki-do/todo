@@ -3,7 +3,7 @@
 .wrapper{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   cursor: pointer;
   padding: 5px 15px;
@@ -14,7 +14,6 @@
   transition: .3s;
   
   .text{
-    flex: 1;
     font-family: 'Raleway';
     font-weight: 400;
   }

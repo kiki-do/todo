@@ -19,7 +19,6 @@ const Card: FC = () => {
       {data.map(({id, text, importance}: ITodo) => (
         <CardItem key={id} text={text} importance={importance} />
       ))}
-
     </div>
   )
 }
