@@ -1,0 +1,8 @@
+.wrapper{
+  margin-top: 50px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0;
+  grid-gap: 20px;
+}

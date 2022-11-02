@@ -1,0 +1,23 @@
+@import 'src/shared/styles';
+
+.wrapper{
+  border: 1px solid $black;
+  box-sizing: border-box;
+  width:fit-content;
+  width: 80%;
+  height: 70px;
+  position: relative;
+
+  .text{
+    text-align: start;
+    margin-left: 20px;
+    margin-top: 10px;
+    max-width: 200px;
+  }
+
+  .trash{
+    position: absolute;
+    right: 10px;
+    top: 35%;
+  }
+}

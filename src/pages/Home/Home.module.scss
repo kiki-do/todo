@@ -1,3 +1,5 @@
+@import './src/shared/styles';
+
 .wrapper{
 
   .title, .subtitle{
@@ -9,7 +11,7 @@
 
     b{
       text-transform: uppercase;
-      color: #1aa4bc;
+      color: $color-letter;
     }
   }
 

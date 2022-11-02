@@ -40,30 +40,30 @@
   }
 
   &:disabled{
-    background: grey;
+    background: $button-disabled;
     cursor: not-allowed;
 
     .text{
-      color: black;
+      color: $black;
     }
   }
 
   &:not(:disabled):active{
-    opacity: .5;
+    opacity: .5,
   }
 
   &.primary{
     &:not(:disabled){
-      background: white;
-      box-shadow: 4px 4px 10px rgba($color: #000000, $alpha: 0.2);
+      background: $white;
+      box-shadow: 4px 4px 10px rgba($color: $black, $alpha: 0.2);
 
       .text{
-        color: #20b3c6;
+        color: $button-primary-text;
       }
 
       &:hover,
       &.active{
-        box-shadow: 6px 6px 10px rgba($color: #000000, $alpha: 0.4);
+        box-shadow: 6px 6px 10px rgba($color: $black, $alpha: 0.4);
       }
     }
   }
