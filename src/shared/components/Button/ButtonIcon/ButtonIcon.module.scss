@@ -1,0 +1,32 @@
+@import 'src/shared/styles';
+
+.wrapper{
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  color: $button-disabled;
+  transition: .5s;
+
+  &:disabled{
+    cursor: not-allowed;
+  }
+
+  .icon{
+    display: block;
+  }
+
+  &:not(:disabled){
+    &:hover,
+    &.isActive{
+      fill: $button-icon-hover;
+    }
+  }
+
+  &:active{
+    opacity: .5;
+  }
+}
+

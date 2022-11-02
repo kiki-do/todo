@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import type { FC, ButtonHTMLAttributes } from 'react';
 import classes from './Button.module.scss';
 import clsx from 'clsx';
+import { ButtonIcon, ButtonIconComponent } from './ButtonIcon/ButtonIcon';
 
 /* Виды кнопок */
 export const VIEWS = {
@@ -32,7 +33,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   isActive?: boolean;
 }
 
-export interface ButtonComponent extends FC<ButtonProps>{}
+export interface ButtonComponent extends FC<ButtonProps>{
+
+  Icon: ButtonIconComponent
+}
 
 export const Button: ButtonComponent = ({ 
   view = 'primary', 
@@ -65,3 +69,4 @@ export const Button: ButtonComponent = ({
     </button>
   );
 };
+  Button.Icon = ButtonIcon;
