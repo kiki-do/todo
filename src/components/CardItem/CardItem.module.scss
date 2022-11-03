@@ -15,9 +15,21 @@
     max-width: 200px;
   }
 
-  .trash{
+  .icon{
     position: absolute;
-    right: 10px;
+    display: flex;  
+    align-items: center;
+    right: 15px;
     top: 35%;
+    
+    &:last-child{
+      right: 78px;
+      top: 33%;
+    }
+
+    &:nth-child(2){
+      right: 42px;
+      top: 28%;
+    }
   }
 }

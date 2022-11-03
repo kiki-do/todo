@@ -24,9 +24,18 @@ export const todoApi = createApi({
         url: `todo`,
         method: 'POST',
         body
-      })
+      }),
+      invalidatesTags: [{type: 'Posts', id: 'LIST'}]
+    }),
+
+    deletePost: builder.mutation({
+      query: (id) => ({
+        url: `todo/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [{type: 'Posts', id: 'LIST'}]
     })
 
   })
 })
-export const { useGetTodoQuery, useAddPostMutation } = todoApi
+export const { useGetTodoQuery, useAddPostMutation, useDeletePostMutation } = todoApi

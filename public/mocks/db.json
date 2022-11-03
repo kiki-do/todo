@@ -6,19 +6,13 @@
       "importance": "hard"
     },
     {
-      "id": 2,
-      "text": "Почистить зубы",
-      "importance": "easy"
-    },
-    {
       "id": 3,
       "text": "Сходить на учебу",
       "importance": "easy"
     },
     {
-      "id": 4,
-      "text": "Учить английский",
-      "importance": "medium"
+      "text": "jsqd",
+      "id": 5
     }
   ]
 }
