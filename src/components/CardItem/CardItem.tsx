@@ -21,6 +21,7 @@ export interface IIcons{
 
 export const CardItem: CardItemComponent = ({ id, text, importance, handleDeletePost}) => {
 
+  /* Значения для кнопок иконок */
   const icons = [{id: 1, name: "trash", size: 24, handles: () => handleDeletePost(id)},
                  {id: 2, name: "edit", size: 16},
                  {id: 3, name: "done", size: 16}
