@@ -7,16 +7,10 @@ export interface Post{
 
 export const todoApi = createApi({
   reducerPath: 'todoApi',
-  tagTypes: ['Posts'],
   baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
   endpoints: (builder) => ({
     getTodo: builder.query({
       query: () => "todo",
-      providesTags: (result) => result 
-        ? [
-          ...result.map(({id}: Post) => ({ type: 'Posts', id: 'LIST'})),
-        ]
-        : [{ type: 'Posts', id: 'LIST'}]
     }),
 
     addPost: builder.mutation({
@@ -25,7 +19,6 @@ export const todoApi = createApi({
         method: 'POST',
         body
       }),
-      invalidatesTags: [{type: 'Posts', id: 'LIST'}]
     }),
 
     deletePost: builder.mutation({
@@ -33,7 +26,6 @@ export const todoApi = createApi({
         url: `todo/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: [{type: 'Posts', id: 'LIST'}]
     })
 
   })

@@ -1,14 +1,9 @@
 .wrapper{
   margin-top: 50px;
   display: grid;
-  justify-items: center;
+  justify-items: center;;
+  align-self: center;
   grid-template-columns: repeat(3, 1fr);
   padding: 0;
   grid-gap: 20px;
-}
-
-.loading{
-  display: flex;
-  justify-content: center; 
-  margin-top: 100px;
 }

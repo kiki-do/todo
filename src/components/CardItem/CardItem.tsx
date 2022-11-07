@@ -17,6 +17,7 @@ export interface IIcons{
   id?: number;
   name: IconNames;
   size?: number;
+  handles: () => void;
 }
 
 export const CardItem: CardItemComponent = ({ id, text, importance, handleDeletePost}) => {
