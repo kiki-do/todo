@@ -18,7 +18,21 @@ export const todoApi = createApi({
         url: `todo`,
         method: 'POST',
         body
+    }),
+  }),
+    
+    updatePost: builder.mutation({
+      query: (body) => ({
+        url: `todo/${body.id}`,
+        method: 'PUT',
+        body
       }),
+    }),
+
+    viewPost: builder.query({
+      query: (id) => ({
+        url: `todo/${id}`,
+      })
     }),
 
     deletePost: builder.mutation({
@@ -27,7 +41,7 @@ export const todoApi = createApi({
         method: 'DELETE',
       }),
     })
+    })
+});
 
-  })
-})
-export const { useGetTodoQuery, useAddPostMutation, useDeletePostMutation } = todoApi
+export const { useGetTodoQuery, useAddPostMutation, useDeletePostMutation, useUpdatePostMutation, useViewPostQuery } = todoApi;

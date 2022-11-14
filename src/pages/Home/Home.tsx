@@ -10,7 +10,7 @@ export const Home: FC = () => {
             <h2 className={classes.subtitle}> List of todos </h2>
             <Card />
             <div className={classes.input}>
-            <Input />
+            <Input/>
             </div>
             
         </div>

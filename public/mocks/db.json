@@ -1,19 +1,15 @@
 {
   "todo": [
     {
-      "text": "Гулять ",
+      "text": "no",
       "id": 1
     },
     {
-      "text": "Выйти на улицу",
+      "text": "Гулять",
       "id": 4
     },
     {
-      "text": "hi",
-      "id": 5
-    },
-    {
-      "text": "hello",
+      "text": "hellosdada",
       "id": 6
     }
   ]

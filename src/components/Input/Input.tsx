@@ -16,6 +16,8 @@ export const Input: FC = () => {
     };
   };
 
+  // const handleEditPost = async() => {}
+
   const onChange = (e: any) => {
     setNewPost(e.target.value);
   }
