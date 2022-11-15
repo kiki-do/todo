@@ -1,12 +1,12 @@
 {
   "todo": [
     {
-      "complete": true,
+      "complete": false,
       "id": 4,
       "text": "qweqw"
     },
     {
-      "isOpen": false,
+      "complete": false,
       "id": 7,
       "text": "dasdad"
     },
