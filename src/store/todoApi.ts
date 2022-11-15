@@ -1,4 +1,3 @@
-import { GITHUB_URL, BASE_URL } from './const';
 import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 export interface Post{
@@ -14,7 +13,7 @@ export const todoApi = createApi({
   tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({
-      query: () => "/",
+      query: () => "todo",
         providesTags: (result) =>
         result
           ? [...result.map(({ id }: any) => ({ type: 'Todos', id })), [{type:'Todos', id: 'LIST'}]]
