@@ -4,6 +4,13 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
+
+  &:not(:disabled) {
+      &.isOpen {
+        visibility:visible;
+      }
+    }
 
   .input {
     padding-left: 30px;

@@ -1,16 +1,14 @@
 {
   "todo": [
     {
-      "text": "no",
-      "id": 1
-    },
-    {
-      "text": "Гулять",
+      "text": "asdsada",
       "id": 4
     },
     {
-      "text": "hellosdada",
-      "id": 6
+      "text": "ssadada",
+      "complete": false,
+      "isOpen": false,
+      "id": 5
     }
   ]
 }

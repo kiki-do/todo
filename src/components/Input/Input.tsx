@@ -11,7 +11,7 @@ export const Input: FC = () => {
 
   const handleAddPost = async() => {
     if(newPost){
-      await addPost({ text : newPost}).unwrap();
+      await addPost({ text : newPost, complete: false, isOpen: false}).unwrap();
       setNewPost('');
     };
   };

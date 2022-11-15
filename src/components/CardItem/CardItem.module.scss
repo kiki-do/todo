@@ -15,6 +15,12 @@
     max-width: 200px;
   }
 
+&:not(:disabled) {
+  &.complete {
+    text-decoration: line-through;
+  }
+}
+
   .icon{
     position: absolute;
     display: flex;  

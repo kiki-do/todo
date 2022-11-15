@@ -8,9 +8,14 @@ export interface Post{
 export const todoApi = createApi({
   reducerPath: 'todoApi',
   baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
+  tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({
       query: () => "todo",
+        providesTags: (result, error, arg) =>
+        result
+          ? [...result.map(({ id }: any) => ({ type: 'Todos' as const, id })), 'Todos']
+          : ['Todos'],
     }),
 
     addPost: builder.mutation({
@@ -19,6 +24,7 @@ export const todoApi = createApi({
         method: 'POST',
         body
     }),
+      invalidatesTags: [{type: 'Todos', id: 'LIST'}],
   }),
     
     updatePost: builder.mutation({
@@ -27,7 +33,25 @@ export const todoApi = createApi({
         method: 'PUT',
         body
       }),
+      invalidatesTags: ['Todos'],
     }),
+
+    completePost: builder.mutation({
+      query: (body) => ({
+        url: `todo/${body.id}`,
+        method: 'PUT',
+        body
+      }),
+    }),
+
+    isOpenPost: builder.mutation({
+      query: (body) => ({
+        url: `todo/${body.id}`,
+        method: 'PUT',
+        body
+      }),
+    }),
+
 
     viewPost: builder.query({
       query: (id) => ({
@@ -35,13 +59,14 @@ export const todoApi = createApi({
       })
     }),
 
-    deletePost: builder.mutation({
+    deletePost: builder.mutation<{ success: boolean; id: number }, number>({
       query: (id) => ({
         url: `todo/${id}`,
         method: 'DELETE',
       }),
+
     })
     })
 });
 
-export const { useGetTodoQuery, useAddPostMutation, useDeletePostMutation, useUpdatePostMutation, useViewPostQuery } = todoApi;
+export const { useGetTodoQuery, useAddPostMutation, useDeletePostMutation, useUpdatePostMutation, useCompletePostMutation, useIsOpenPostMutation } = todoApi;

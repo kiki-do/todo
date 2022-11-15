@@ -1,14 +1,16 @@
-import type { FC } from 'react'
+import { FC } from 'react'
 import { Nothing } from '../../shared/components/Nothing/Nothing';
 import { useGetTodoQuery, useDeletePostMutation} from '../../store/todoApi';
 import { CardItem } from '../CardItem/CardItem'
 import { EditInput } from '../EditInput/EditInput';
 import classes from './Card.module.scss';
 
+
 export interface ITodo {
   id: number;
   text: string;
   importance: string;
+  isOpen: boolean;
   handleDeletePost: (id: number) => void;
   handleEditPost: (id: number, text: string) => void
   complete: boolean;
@@ -17,26 +19,24 @@ export interface ITodo {
 const Card: FC = () => {
   const {data = []} = useGetTodoQuery(0);
   const [deletePost] = useDeletePostMutation();
-
-
-
-  const handleIsOpen = (prev: boolean) => !prev;
-
+  
   const handleDeletePost = async(id: number) => {
     await deletePost(id).unwrap();
   }
 
-  if(data.length === 0) return <Nothing />
+  // if(data.length === 0) return <Nothing />
 
 
   return (
     <div className={classes.wrapper}>
-      {data.map(({id, text, importance, complete}: ITodo) => (
-        <div className={classes.content}>
-        <CardItem key={id} text={text} id={id} complete={complete}
-          handleDeletePost={handleDeletePost} handleIsOpen={handleIsOpen}  />  
+      {data.map(({id, text, importance, complete, isOpen}: ITodo) => (
+        <div key={id} className={classes.content}>
+        <CardItem text={text} id={id} complete={complete} isOpen={isOpen}
+          handleDeletePost={handleDeletePost}/>  
 
-         <EditInput key={id} text={text} id={id} />
+        <div className={classes.input}>
+         <EditInput isOpen={isOpen} text={text} id={id} />
+        </div>
         </div>
       ))
        
