@@ -1,14 +1,14 @@
 {
   "todo": [
     {
-      "complete": true,
+      "complete": false,
       "id": 4,
       "text": "qweqw"
     },
     {
-      "complete": true,
+      "isOpen": true,
       "id": 7,
-      "text": "go"
+      "text": "dasdad"
     },
     {
       "text": "sadsadaASDDSSADsda",
