@@ -5,8 +5,6 @@ export interface Post{
   text:string;
 }
 
-type PostResponce = Post[];
-
 export const todoApi = createApi({
   reducerPath: 'todoApi',
   baseQuery: fetchBaseQuery({baseUrl: "http://localhost:3001/"}),
