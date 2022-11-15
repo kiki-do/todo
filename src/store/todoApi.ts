@@ -63,7 +63,7 @@ export const todoApi = createApi({
       })
     }),
 
-    deletePost: builder.mutation<{ success: boolean; id: number }, number>({
+    deletePost: builder.mutation<Post, Partial<Post> & Pick<Post, 'id'>>({
       query: (id) => ({
         url: `todo${id}`,
         method: 'DELETE',

@@ -6,7 +6,7 @@
       "text": "qweqw"
     },
     {
-      "isOpen": true,
+      "complete": true,
       "id": 7,
       "text": "dasdad"
     },
@@ -21,9 +21,7 @@
       "id": 9
     },
     {
-      "text": "asdasdas",
-      "complete": false,
-      "isOpen": false,
+      "text": "asdasdasxczcz",
       "id": 10
     }
   ]
