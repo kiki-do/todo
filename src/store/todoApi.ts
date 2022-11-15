@@ -5,6 +5,8 @@ export interface Post{
   text:string;
 }
 
+type PostResponce = Post[];
+
 export const todoApi = createApi({
   reducerPath: 'todoApi',
   baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
@@ -12,36 +14,37 @@ export const todoApi = createApi({
   endpoints: (builder) => ({
     getTodo: builder.query({
       query: () => "todo",
-        providesTags: (result, error, arg) =>
+        providesTags: (result) =>
         result
-          ? [...result.map(({ id }: any) => ({ type: 'Todos' as const, id })), 'Todos']
-          : ['Todos'],
+          ? [...result.map(({ id }: any) => ({ type: 'Todos', id })), [{type:'Todos', id: 'LIST'}]]
+          :  [{type:'Todos', id: 'LIST'}],
     }),
 
     addPost: builder.mutation({
       query: (body) => ({
-        url: `todo`,
+        url: `/todo`,
         method: 'POST',
         body
     }),
-      invalidatesTags: [{type: 'Todos', id: 'LIST'}],
+      invalidatesTags:  [{type:'Todos', id: 'LIST'}],
   }),
     
     updatePost: builder.mutation({
       query: (body) => ({
-        url: `todo/${body.id}`,
+        url: `/todo/${body.id}`,
         method: 'PUT',
         body
       }),
-      invalidatesTags: ['Todos'],
+      invalidatesTags:  [{type:'Todos', id: 'LIST'}],
     }),
 
     completePost: builder.mutation({
       query: (body) => ({
-        url: `todo/${body.id}`,
+        url: `/todo/${body.id}`,
         method: 'PUT',
         body
       }),
+      invalidatesTags:  [{type:'Todos', id: 'LIST'}],
     }),
 
     isOpenPost: builder.mutation({
@@ -64,7 +67,7 @@ export const todoApi = createApi({
         url: `todo/${id}`,
         method: 'DELETE',
       }),
-
+      invalidatesTags:  [{type:'Todos', id: 'LIST'}],
     })
     })
 });

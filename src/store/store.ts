@@ -11,4 +11,3 @@ export const store = configureStore({
     getDefaultMiddleware().concat(todoApi.middleware),
 })
 
-export type AppDispatch = typeof store.dispatch

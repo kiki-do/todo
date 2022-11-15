@@ -1,14 +1,25 @@
 {
   "todo": [
     {
-      "text": "asdsada",
-      "id": 4
+      "complete": false,
+      "id": 4,
+      "text": "qweqw"
     },
     {
-      "text": "ssadada",
+      "complete": true,
+      "id": 6,
+      "text": "цйуйцу"
+    },
+    {
+      "complete": false,
+      "id": 7,
+      "text": "go"
+    },
+    {
+      "text": "ASDDSSAD",
       "complete": false,
       "isOpen": false,
-      "id": 5
+      "id": 8
     }
   ]
 }
