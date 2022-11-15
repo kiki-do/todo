@@ -1,0 +1,25 @@
+{
+  "todo": [
+    {
+      "complete": false,
+      "id": 4,
+      "text": "qweqw"
+    },
+    {
+      "complete": true,
+      "id": 6,
+      "text": "цйуйцу"
+    },
+    {
+      "complete": false,
+      "id": 7,
+      "text": "go"
+    },
+    {
+      "text": "ASDDSSAD",
+      "complete": false,
+      "isOpen": false,
+      "id": 8
+    }
+  ]
+}
