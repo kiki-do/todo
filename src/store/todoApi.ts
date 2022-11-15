@@ -14,7 +14,7 @@ export const todoApi = createApi({
   tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({
-      query: () => "todo/",
+      query: () => "todo",
         providesTags: (result) =>
         result
           ? [...result.map(({ id }: any) => ({ type: 'Todos', id })), [{type:'Todos', id: 'LIST'}]]
@@ -23,7 +23,7 @@ export const todoApi = createApi({
 
     addPost: builder.mutation({
       query: (body) => ({
-        url: `/todo/`,
+        url: `todo`,
         method: 'POST',
         body
     }),
@@ -32,7 +32,7 @@ export const todoApi = createApi({
     
     updatePost: builder.mutation({
       query: (body) => ({
-        url: `/todo/${body.id}`,
+        url: `todo/${body.id}`,
         method: 'PUT',
         body
       }),
@@ -41,7 +41,7 @@ export const todoApi = createApi({
 
     completePost: builder.mutation({
       query: (body) => ({
-        url: `/todo/${body.id}`,
+        url: `todo/${body.id}`,
         method: 'PUT',
         body
       }),
@@ -59,13 +59,13 @@ export const todoApi = createApi({
 
     viewPost: builder.query({
       query: (id) => ({
-        url: `todo/${id}`,
+        url: `todo${id}`,
       })
     }),
 
     deletePost: builder.mutation<{ success: boolean; id: number }, number>({
       query: (id) => ({
-        url: `todo/${id}`,
+        url: `todo${id}`,
         method: 'DELETE',
       }),
       invalidatesTags:  [{type:'Todos', id: 'LIST'}],
