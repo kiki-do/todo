@@ -59,13 +59,13 @@ export const todoApi = createApi({
 
     viewPost: builder.query({
       query: (id) => ({
-        url: `todo${id}`,
+        url: `todo/${id}`,
       })
     }),
 
     deletePost: builder.mutation<Post, Partial<Post> & Pick<Post, 'id'>>({
       query: (id) => ({
-        url: `todo${id}`,
+        url: `todo/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags:  [{type:'Todos', id: 'LIST'}],
