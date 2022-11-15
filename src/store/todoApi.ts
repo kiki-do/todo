@@ -53,6 +53,7 @@ export const todoApi = createApi({
         method: 'PUT',
         body
       }),
+      invalidatesTags:  [{type:'Todos', id: 'LIST'}],
     }),
 
 
