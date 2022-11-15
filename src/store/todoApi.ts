@@ -10,7 +10,7 @@ type PostResponce = Post[];
 
 export const todoApi = createApi({
   reducerPath: 'todoApi',
-  baseQuery: fetchBaseQuery({baseUrl: GITHUB_URL}),
+  baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
   tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({
