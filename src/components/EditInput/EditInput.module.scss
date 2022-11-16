@@ -8,6 +8,17 @@
 
   &:not(:disabled) {
       &.isOpen {
+        animation-duration: 1s;
+        animation-name: slidein;
+        @keyframes slidein {
+          from {
+              margin-top: -20px;
+            }
+          
+            to {
+              margin: 0px;
+            }
+        }
         visibility:visible;
       }
     }

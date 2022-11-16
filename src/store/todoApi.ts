@@ -1,3 +1,4 @@
+import { BASE_URL, HEROKU_URL } from './const';
 import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 export interface Post{
@@ -9,7 +10,7 @@ type PostResponce = Post[];
 
 export const todoApi = createApi({
   reducerPath: 'todoApi',
-  baseQuery: fetchBaseQuery({baseUrl: "https://todo-react-3.herokuapp.com/"}),
+  baseQuery: fetchBaseQuery({baseUrl: HEROKU_URL}),
   tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({

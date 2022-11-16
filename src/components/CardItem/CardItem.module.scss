@@ -3,21 +3,46 @@
 .wrapper{
   border: 1px solid $black;
   box-sizing: border-box;
-  width:fit-content;
   width: 80%;
   height: 100px;
   position: relative;
+
+  @media screen and (max-width: 1240px){
+      border: 1px solid $black;
+        box-sizing: border-box;
+        width: 50%;
+        height: 60px;
+        position: relative;
+  }
 
   .text{
     text-align: start;
     margin-left: 20px;
     margin-top: 35px;
     max-width: 200px;
+
+    @media screen and (max-width: 1240px) {
+        font-size: 10px;
+        margin-top: 20px;
+        display: flex;
+        max-width: 70px;
+      }
   }
 
 &:not(:disabled) {
   &.complete {
     text-decoration: line-through;
+      animation-duration: 1s;
+      animation-name: opacity;
+      @keyframes opacity {
+              from {
+                opacity: .2;
+              }
+          
+              to {
+                text-decoration: line-through;
+              }
+            }
   }
 }
 

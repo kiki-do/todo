@@ -15,6 +15,13 @@
     &::placeholder{
       text-align: start;
     }
+  }
+
+    &:not(:disabled) {
+      &.complete {
+          opacity: .5;
+          transition: .5s;
+      }
 
   }
 }

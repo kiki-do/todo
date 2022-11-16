@@ -4,6 +4,7 @@ import { useAddPostMutation } from '../../store/todoApi'
 import { Button } from '../../shared/components/Button/Button';
 import classes from './Input.module.scss';
 
+
 export const Input: FC = () => {
 
   const [addPost] = useAddPostMutation();
@@ -15,6 +16,19 @@ export const Input: FC = () => {
       setNewPost('');
     };
   };
+
+  //   const wrapperClassName = useMemo(
+  //   () => 
+  //   clsx(
+  //     classes.wrapper,
+  //     {
+  //       [classes.isFetching]: ,
+
+  //     },
+  //   ),
+  //   [isFetching],
+  // );
+
 
   // const handleEditPost = async() => {}
 

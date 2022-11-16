@@ -5,6 +5,7 @@ import { IconNames } from '../../shared/components/Icon/svg';
 import { useCompletePostMutation, useIsOpenPostMutation } from '../../store/todoApi';
 import classes from './CardItem.module.scss';
 
+
 interface CardItemProps{
   text: string;
   isOpen: boolean;
@@ -45,6 +46,7 @@ export const CardItem: CardItemComponent = ({ id, text, complete, handleDeletePo
       classes.wrapper,
       {
         [classes.complete]: complete,
+        
 
       },
     ),

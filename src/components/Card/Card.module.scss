@@ -7,10 +7,27 @@
   padding: 0;
   grid-gap: 20px;
 
+  @media screen and (max-width: 1240px){
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+    grid-gap: 10px;
+  }
+
+
   .content{
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    animation-duration: 1s;
+      animation-name: slidein;
+    
+
+
+    @media screen and (max-width: 1240px) {
+      gap: 10px;
+    }
   }
+
+
 }
