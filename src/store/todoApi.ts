@@ -9,7 +9,7 @@ type PostResponce = Post[];
 
 export const todoApi = createApi({
   reducerPath: 'todoApi',
-  baseQuery: fetchBaseQuery({baseUrl: "https://todo-react-20.herokuapp.com/api"}),
+  baseQuery: fetchBaseQuery({baseUrl: "https://todo-react-20.herokuapp.com"}),
   tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({
