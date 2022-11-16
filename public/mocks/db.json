@@ -6,8 +6,9 @@
       "text": "qweqw"
     },
     {
-      "text": "dasdadйцуйцуй",
-      "id": 7
+      "complete": false,
+      "id": 7,
+      "text": "dasdadйцуйцуй"
     },
     {
       "complete": true,
