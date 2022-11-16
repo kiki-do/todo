@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import { Button } from '../../shared/components/Button/Button';
 // import { Nothing } from '../../shared/components/Nothing/Nothing';
 import { useGetTodoQuery, useDeletePostMutation} from '../../store/todoApi';
 import { CardItem } from '../CardItem/CardItem'
@@ -17,8 +18,10 @@ export interface ITodo {
 }
 
 const Card: FC = () => {
-  const {data = []} = useGetTodoQuery('');
+  const [page, setPage] = useState(1);
+  const {data = [],  isLoading, isFetching} = useGetTodoQuery(page);
   const [deletePost] = useDeletePostMutation();
+
   
   const handleDeletePost = async(id: number) => {
     await deletePost(id).unwrap();
@@ -31,13 +34,14 @@ const Card: FC = () => {
     <div className={classes.wrapper}>
       {data.map(({id, text, complete, isOpen}: ITodo) => (
         <div key={id} className={classes.content}>
-        <CardItem text={text} id={id} complete={complete} isOpen={isOpen}
-          handleDeletePost={handleDeletePost}/>  
+          <CardItem text={text} id={id} complete={complete} isOpen={isOpen}
+            handleDeletePost={handleDeletePost}/>  
 
-        <div className={classes.input}>
-         <EditInput isOpen={isOpen} text={text} id={id} />
+          <div className={classes.input}>
+          <EditInput isOpen={isOpen} text={text} id={id} />
+          </div>
         </div>
-        </div>
+        
       ))
        
       }

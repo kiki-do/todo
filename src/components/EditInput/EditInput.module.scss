@@ -12,6 +12,7 @@
         animation-name: slidein;
         @keyframes slidein {
           from {
+              opacity: 0;
               margin-top: -20px;
             }
           

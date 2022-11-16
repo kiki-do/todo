@@ -6,6 +6,18 @@
   width: 80%;
   height: 100px;
   position: relative;
+  animation-duration: 1s;
+    animation-name: wrapper;
+  
+    @keyframes wrapper {
+      from {
+        opacity: 0;
+      }
+  
+      to {
+        opacity: 1;
+      }
+    }
 
   @media screen and (max-width: 1240px){
       border: 1px solid $black;

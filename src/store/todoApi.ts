@@ -5,16 +5,14 @@ export interface Post{
   id: number;
   text:string;
 }
-
-type PostResponce = Post[];
-
 export const todoApi = createApi({
   reducerPath: 'todoApi',
   baseQuery: fetchBaseQuery({baseUrl: HEROKU_URL}),
   tagTypes: ['Todos'],
   endpoints: (builder) => ({
     getTodo: builder.query({
-      query: () => "todo",
+      query: (page = 1) => `todo?page=${page}&perPage=25`,
+ 
         providesTags: (result) =>
         result
           ? [...result.map(({ id }: any) => ({ type: 'Todos', id })), {type:'Todos', id: 'LIST'}]

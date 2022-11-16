@@ -46,11 +46,11 @@ export const CardItem: CardItemComponent = ({ id, text, complete, handleDeletePo
       classes.wrapper,
       {
         [classes.complete]: complete,
-        
+        [classes.isOpen]: isOpen,
 
       },
     ),
-    [complete],
+    [complete, isOpen],
   );
 
   return (

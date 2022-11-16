@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FC } from 'react'
 import { useAddPostMutation } from '../../store/todoApi'
 import { Button } from '../../shared/components/Button/Button';
-import classes from './Input.module.scss';
+import classes from './Input.module.scss';  
 
 
 export const Input: FC = () => {
