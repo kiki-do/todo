@@ -41,6 +41,7 @@ const wrapperClassName = useMemo(
     () => 
       clsx(classes.wrapper, {
         [classes.isOpen]: isOpen,
+        [classes.isNotOpen]: !isOpen,
       }, ),  
      [isOpen]
     );
