@@ -1,10 +1,11 @@
-import { FC, useState } from 'react'
-import { Button } from '../../shared/components/Button/Button';
-// import { Nothing } from '../../shared/components/Nothing/Nothing';
+import { useState } from 'react';
+import type { FC } from 'react'
+import { Nothing } from '../../shared/components/Nothing/Nothing';
 import { useGetTodoQuery, useDeletePostMutation} from '../../store/todoApi';
 import { CardItem } from '../CardItem/CardItem'
 import { EditInput } from '../EditInput/EditInput';
 import classes from './Card.module.scss';
+
 
 
 export interface ITodo {
@@ -18,8 +19,10 @@ export interface ITodo {
 }
 
 const Card: FC = () => {
-  const [page, setPage] = useState(1);
-  const {data = [],  isLoading, isFetching} = useGetTodoQuery(page);
+  const [page, setPage] = useState<number>(1);
+
+  const {data = []} = useGetTodoQuery(page);
+
   const [deletePost] = useDeletePostMutation();
 
   
@@ -27,7 +30,7 @@ const Card: FC = () => {
     await deletePost(id).unwrap();
   }
 
-  // if(data.length === 0) return <Nothing />
+  if(data.length === 0) return <Nothing />
 
 
   return (

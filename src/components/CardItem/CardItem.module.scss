@@ -44,19 +44,53 @@
 &:not(:disabled) {
   &.complete {
     text-decoration: line-through;
-      animation-duration: 1s;
-      animation-name: opacity;
-      @keyframes opacity {
-              from {
-                opacity: .2;
-              }
+    animation-duration: 1s;
+    animation-name: opacity;
+    @keyframes opacity {
+      from {
+        opacity: .2;
+      }
           
-              to {
-                text-decoration: line-through;
-              }
-            }
+      to {
+        text-decoration: line-through;
+      }
+    }
   }
+
+    &.isDelete {
+      animation-duration: 1s;
+      animation-name: delete;
+  
+      @keyframes delete {
+        from {
+          opacity: 1;
+        }
+  
+        to {
+          opacity: 0;
+          margin-top: 10px;
+        }
+      }
+    }
+
 }
+
+// &:not(:disabled) {
+//   &.isDelete {
+//     animation-duration: 1s;
+//     animation-name: delete;
+
+//     @keyframes delete {
+//       from {
+//         opacity: 1;
+//       }
+
+//       to {
+//         opacity: 0;
+//       }
+//     }
+//   }
+// }
 
   .icon{
     position: absolute;

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { FC, useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import type { FC } from 'react';
 import { Button } from '../../shared/components/Button/Button';
 import { IconNames } from '../../shared/components/Icon/svg';
 import { useCompletePostMutation, useIsOpenPostMutation } from '../../store/todoApi';
@@ -32,7 +33,8 @@ export const CardItem: CardItemComponent = ({ id, text, complete, handleDeletePo
 
   const handleComplete = async() => await completePost({complete: !complete, id, text})
   
-  const handleIsOpen =  async() => await isOpenPost({isOpen: !isOpen, id, text})
+
+  const handleIsOpen  =  async() => await isOpenPost({isOpen: !isOpen, id, text})
   
   /* Значения для кнопок иконок */
   const icons = [{id: 1, name: "trash", size: 24, handles: () => handleDeletePost(id)},
@@ -46,11 +48,10 @@ export const CardItem: CardItemComponent = ({ id, text, complete, handleDeletePo
       classes.wrapper,
       {
         [classes.complete]: complete,
-        [classes.isOpen]: isOpen,
 
       },
     ),
-    [complete, isOpen],
+    [complete],
   );
 
   return (
