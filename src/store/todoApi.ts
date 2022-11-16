@@ -16,7 +16,7 @@ export const todoApi = createApi({
       query: () => "todo",
         providesTags: (result) =>
         result
-          ? [...result.map(({ id }: any) => ({ type: 'Todos', id })), [{type:'Todos', id: 'LIST'}]]
+          ? [...result.map(({ id }: any) => ({ type: 'Todos', id })), {type:'Todos', id: 'LIST'}]
           :  [{type:'Todos', id: 'LIST'}],
     }),
 
