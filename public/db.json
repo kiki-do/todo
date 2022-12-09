@@ -1,27 +1,60 @@
 {
-  "todo": [
-    {
-      "complete": false,
-      "id": 4,
-      "text": "qweqw"
-    },
-    {
-      "complete": false,
-      "id": 7,
-      "text": "dasdadйцуйцуй"
-    },
-    {
-      "complete": true,
-      "id": 8,
-      "text": "sadsadaASDDSSADsda"
-    },
-    {
-      "text": "asdasdasda",
-      "id": 9
-    },
-    {
-      "text": "asdasdasxczczasda",
-      "id": 10
-    }
-  ]
+	"todo": [
+		{
+			"id": "2",
+			"complete": true,
+			"text": "sadsadaASDDSSADsda",
+			"stage": "start",
+			"undertask": [
+				{
+					"id": "2",
+					"complete": true,
+					"text": "sadsadaASDDSSADsda",
+					"stage": "start"
+				}
+			]
+		},
+		{
+			"id": "3",
+			"complete": false,
+			"text": "sadsadaASDDSSADsda",
+			"stage": "develop",
+			"undertask": [
+				{
+					"id": "3",
+					"complete": true,
+					"text": "sadsadaASDDSSADsda",
+					"stage": "start"
+				}
+			]
+		},
+		{
+			"id": "4",
+			"complete": true,
+			"text": "asdasdasda",
+			"stage": "start",
+			"undertask": [
+				{
+					"id": "4",
+					"complete": true,
+					"text": "sadsadaASDDSSADsda",
+					"stage": "start"
+				}
+			]
+		},
+		{
+			"id": "5",
+			"complete": true,
+			"text": "asdasdasxczczasda",
+			"stage": "done",
+			"undertask": [
+				{
+					"id": "5",
+					"complete": true,
+					"text": "sadsadaASDDSSADsda",
+					"stage": "start"
+				}
+			]
+		}
+	]
 }

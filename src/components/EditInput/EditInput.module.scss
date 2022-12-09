@@ -1,84 +1,68 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  visibility: hidden;
+	display: none;
 
-  &:not(:disabled) {
-      &.isOpen {
-        animation-duration: 1s;
-        animation-name: slidein;
-        @keyframes slidein {
-          from {
-              opacity: .2;
-              margin-top: -20px;
-            }
-          
-            to {
-              margin: 0px;
-            }
-        }
-        visibility:visible;
-      }
-    }
+	&:not(:disabled) {
+		&.isOpen {
+			animation-duration: 1s;
+			animation-name: slidein;
 
-    &:not(:disabled) {
-      &.isOpen {
-        animation-duration: 1s;
-        animation-name: slidein;
-        @keyframes slidein {
-          from {
-              opacity: .2;
-              margin-top: -20px;
-            }
-          
-            to {
-              margin: 0px;
-            }
-        }
+			@keyframes slidein {
+				from {
+					opacity: 0.2;
+					margin-top: -20px;
+				}
 
-        
-        visibility:visible;
-      }
+				to {
+					margin: 0px;
+				}
+			}
 
-      &.isNotOpen {
-        animation-duration: 1s;
-        animation-name: slideout;
-      
-        @keyframes slideout {
-          from {
-            margin: 0px;
-          }
-      
-          to {     
-            opacity: 0;
-            margin-top: -30px;
-             }
-          }
-    
-        } 
-    }
-    
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
 
-  .input {
-    padding-left: 30px;
-    width: 400px;
-    height: 50px;
-    outline: none;
-    font-family: 'Raleway', serif;
+		&.isNotOpen {
+			animation-duration: 1s;
+			animation-name: slideout;
 
-    &::placeholder {
-      text-align: start;
-    }
+			@keyframes slideout {
+				from {
+					margin: 0px;
+				}
 
-  }
+				to {
+					opacity: 0;
+					margin-top: -30px;
+				}
+			}
+		}
+	}
 
-  .button{
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: 20px;
-  }
+	.input {
+		padding-left: 30px;
+		width: 400px;
+		height: 50px;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		outline: none;
+		font-family: "Raleway", serif;
+
+		&::placeholder {
+			text-align: start;
+		}
+
+		&:invalid {
+			border-color: #a11717;
+		}
+	}
+
+	.button {
+		display: flex;
+		flex-direction: row;
+		align-items: start;
+		gap: 20px;
+	}
 }

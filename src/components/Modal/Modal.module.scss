@@ -1,0 +1,28 @@
+@import "src/shared/styles";
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba($black, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: 0.3;
+
+	.active {
+		opacity: 1;
+	}
+
+	.content {
+		padding: 20px;
+		border-radius: 12px;
+		border-color: $white;
+		transform: scale(0.5);
+		transition: 0.3;
+	}
+}

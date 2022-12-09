@@ -1,55 +1,95 @@
-import { useState } from 'react';
-import type { FC } from 'react'
-import { Nothing } from '../../shared/components/Nothing/Nothing';
-import { useGetTodoQuery, useDeletePostMutation} from '../../store/todoApi';
-import { CardItem } from '../CardItem/CardItem'
-import { EditInput } from '../EditInput/EditInput';
-import classes from './Card.module.scss';
+import type { FC, DragEvent } from "react";
+import { Nothing } from "../../shared/components/Nothing/Nothing";
+import { CardItem } from "../CardItem/CardItem";
+import { EditInput } from "../EditInput/EditInput";
+import classes from "./Card.module.scss";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { dataSelector } from "../../store/dataSlice/selectors";
+import type { DataItems } from "../../store/dataSlice/types";
+import {
+	isModalPost,
+	isOpenPost,
+	removePost,
+	stagePost,
+} from "../../store/dataSlice/slice";
+import { Modal } from "../Modal/Modal";
 
-
-
-export interface ITodo {
-  id: number;
-  text: string;
-  importance: string;
-  isOpen: boolean;
-  handleDeletePost: (id: number) => void;
-  handleEditPost: (id: number, text: string) => void
-  complete: boolean;
+export interface fieldsType {
+	id: number;
+	stage: string;
 }
 
 const Card: FC = () => {
-  const [page, setPage] = useState<number>(1);
+	const dispatch = useAppDispatch();
 
-  const {data = []} = useGetTodoQuery(page);
+	const data = useAppSelector(dataSelector);
 
-  const [deletePost] = useDeletePostMutation();
+	const handleDeletePost = (id: string) => {
+		dispatch(removePost(id));
+	};
 
-  
-  const handleDeletePost = async(id: number) => {
-    await deletePost(id).unwrap();
-  }
+	const handleIsOpen = (id: string) => dispatch(isOpenPost(id));
 
-  if(data.length === 0) return <Nothing />
+	const handleIsModal = (id: string) => dispatch(isModalPost(id));
 
+	const fields: fieldsType[] = [
+		{ id: 1, stage: "start" },
+		{ id: 2, stage: "develop" },
+		{ id: 3, stage: "done" },
+	];
 
-  return (
-    <div className={classes.wrapper}>
-      {data.map(({id, text, complete, isOpen}: ITodo) => (
-        <div key={id} className={classes.content}>
-          <CardItem text={text} id={id} complete={complete} isOpen={isOpen}
-            handleDeletePost={handleDeletePost}/>  
+	const draggingOver = (e: DragEvent<HTMLDivElement>) => {
+		e.preventDefault();
+		console.log("Dragging over");
+	};
 
-          <div className={classes.input}>
-          <EditInput isOpen={isOpen} text={text} id={id} />
-          </div>
-        </div>
-        
-      ))
-       
-      }
-    </div>
-  )
-}
+	const draggingDrop = (
+		e: DragEvent<HTMLDivElement> & { dataTransfer?: DataTransfer },
+		item: fieldsType
+	) => {
+		let transferId = e.dataTransfer.getData("id");
+		dispatch(stagePost({ stage: item.stage, id: transferId }));
+	};
 
-export default Card
+	if (data.length === 0) return <Nothing />;
+
+	return (
+		<div className={classes.wrapper}>
+			{fields.map((item: fieldsType) => (
+				<div key={item.id} className={classes.stages}>
+					{item.stage}
+					<div
+						onDragOver={e => draggingOver(e)}
+						onDrop={e => draggingDrop(e, item)}
+						className={classes.stage}
+					>
+						{data &&
+							data.map(
+								({ id, text, isOpen, stage, isModal }: DataItems) =>
+									stage === item.stage && (
+										<div key={id} className={classes.content}>
+											<CardItem
+												text={text}
+												id={id}
+												handleDeletePost={handleDeletePost}
+												handleIsOpen={handleIsOpen}
+												handleIsModal={handleIsModal}
+												stage={stage}
+											/>
+
+											<div className={classes.input}>
+												<Modal isModal={isModal} />
+												<EditInput text={text} id={id} isOpen={isOpen} />
+											</div>
+										</div>
+									)
+							)}
+					</div>
+				</div>
+			))}
+		</div>
+	);
+};
+
+export default Card;

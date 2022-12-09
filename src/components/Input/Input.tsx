@@ -1,46 +1,44 @@
-import { useState } from 'react';
-import type { FC } from 'react'
-import { useAddPostMutation } from '../../store/todoApi'
-import { Button } from '../../shared/components/Button/Button';
-import classes from './Input.module.scss';  
-
+import { ChangeEvent, useState } from "react";
+import type { FC } from "react";
+import { Button } from "../../shared/components/Button/Button";
+import { addPost } from "../../store/dataSlice/slice";
+import classes from "./Input.module.scss";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 export const Input: FC = () => {
+	const dispatch = useAppDispatch();
+	const [newPost, setNewPost] = useState<string>("");
 
-  const [addPost] = useAddPostMutation();
-  const [newPost, setNewPost] = useState<string>('');
+	const handleAddPost = async () => {
+		if (newPost) {
+			dispatch(
+				addPost({
+					id: Date.now().toString(),
+					text: newPost,
+					isOpen: false,
+					isModal: false,
+					stage: "start",
+				})
+			);
 
-  const handleAddPost = async() => {
-    if(newPost){
-      await addPost({ text : newPost, complete: false, isOpen: false}).unwrap();
-      setNewPost('');
-    };
-  };
+			setNewPost("");
+		}
+	};
 
-  //   const wrapperClassName = useMemo(
-  //   () => 
-  //   clsx(
-  //     classes.wrapper,
-  //     {
-  //       [classes.isFetching]: ,
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewPost(e.target.value);
+	};
 
-  //     },
-  //   ),
-  //   [isFetching],
-  // );
-
-
-  // const handleEditPost = async() => {}
-
-  const onChange = (e: any) => {
-    setNewPost(e.target.value);
-  }
-
-  return (
-    <div className={classes.wrapper}>
-      <input className={classes.input} type="text" placeholder='Write here you todo!' 
-        value={newPost} onChange={onChange} />
-      <Button onClick={handleAddPost}>Add post</Button>
-    </div>
-  )
-}
+	return (
+		<div className={classes.wrapper}>
+			<input
+				className={classes.input}
+				type="text"
+				placeholder="Write here you todo!"
+				value={newPost}
+				onChange={onChange}
+			/>
+			<Button onClick={handleAddPost}>Add post</Button>
+		</div>
+	);
+};
