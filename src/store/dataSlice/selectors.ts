@@ -1,3 +1,3 @@
-import { RootReducer, RootState } from "./../store";
+import { RootState } from "./../store";
 
-export const dataSelector = (state: RootReducer) => state.data.data;
+export const dataSelector = (state: RootState) => state.data.data;
