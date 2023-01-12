@@ -1,11 +1,9 @@
-import { fetchData } from "./../thunk/thunk";
+import { getDataFromLS } from "../../shared/getDataFromLS/getDataFromLS";
 import type { DataItems, IData } from "./types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const LS_KEY = "ls";
-
 const initialState: IData = {
-	data: [],
+	data: getDataFromLS(),
 	status: "loading",
 };
 
@@ -13,6 +11,10 @@ const dataSlice = createSlice({
 	name: "data",
 	initialState,
 	reducers: {
+		setData: (state, action: PayloadAction<DataItems[]>) => {
+			state.data = action.payload;
+		},
+
 		addPost: (state, action: PayloadAction<DataItems>) => {
 			state.data.push(action.payload);
 		},
@@ -44,7 +46,6 @@ const dataSlice = createSlice({
 					item.text = action.payload.text;
 					item.isOpen = !item.isOpen;
 				}
-				localStorage.setItem(LS_KEY, JSON.stringify(state.data));
 			});
 		},
 
@@ -75,24 +76,24 @@ const dataSlice = createSlice({
 		// 	}
 		// },
 	},
-	extraReducers: builder => {
-		builder.addCase(fetchData.pending, state => {
-			state.status = "loading";
-			state.data = [];
-		});
+	// extraReducers: builder => {
+	// 	builder.addCase(fetchData.pending, state => {
+	// 		state.status = "loading";
+	// 		state.data = [];
+	// 	});
 
-		builder.addCase(
-			fetchData.fulfilled,
-			(state, action: PayloadAction<DataItems[]>) => {
-				state.status = "success";
-				state.data = action.payload;
-			}
-		);
-		builder.addCase(fetchData.rejected, state => {
-			state.status = "error";
-			state.data = [];
-		});
-	},
+	// 	builder.addCase(
+	// 		fetchData.fulfilled,
+	// 		(state, action: PayloadAction<DataItems[]>) => {
+	// 			state.status = "success";
+	// 			state.data = action.payload;
+	// 		}
+	// 	);
+	// 	builder.addCase(fetchData.rejected, state => {
+	// 		state.status = "error";
+	// 		state.data = [];
+	// 	});
+	// },
 });
 
 export const {

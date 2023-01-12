@@ -38,7 +38,7 @@ export const EditInput: EditInputComponent = ({ text, id, isOpen = false }) => {
 
 	const wrapperClassName = useMemo(
 		() =>
-			clsx(classes.wrapper, {
+			clsx(classes.wrapper, classes.hidden, {
 				[classes.isOpen]: isOpen,
 				[classes.isNotOpen]: !isOpen,
 			}),

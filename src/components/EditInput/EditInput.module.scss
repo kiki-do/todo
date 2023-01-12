@@ -14,6 +14,7 @@
 
 				to {
 					margin: 0px;
+					opacity: 1;
 				}
 			}
 
@@ -29,11 +30,12 @@
 
 			@keyframes slideout {
 				from {
-					margin: 0px;
+					display: flex;
+					margin-top: 0px;
 				}
 
 				to {
-					opacity: 0;
+					display: none;
 					margin-top: -30px;
 				}
 			}

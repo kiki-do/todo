@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { FC } from "react";
 import Card from "../../components/Card/Card";
 import { Input } from "../../components/Input/Input";

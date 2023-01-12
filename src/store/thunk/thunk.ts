@@ -1,5 +1,5 @@
 import { DataItems } from "./../dataSlice/types";
-import { BASE_URL, HEROKU_URL } from "./../const";
+import { BASE_URL } from "./../const";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 

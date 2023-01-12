@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { FC, DragEvent } from "react";
 import { Nothing } from "../../shared/components/Nothing/Nothing";
 import { CardItem } from "../CardItem/CardItem";
@@ -24,6 +25,16 @@ const Card: FC = () => {
 	const dispatch = useAppDispatch();
 
 	const data = useAppSelector(dataSelector);
+
+	const isMounted = useRef(false);
+
+	useEffect(() => {
+		if (isMounted.current) {
+			const json = JSON.stringify(data);
+			localStorage.setItem("data", json);
+		}
+		isMounted.current = true;
+	}, [data]);
 
 	const handleDeletePost = (id: string) => {
 		dispatch(removePost(id));

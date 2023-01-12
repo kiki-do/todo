@@ -44,13 +44,6 @@ export const CardItem: CardItemComponent = ({
 			size: 14,
 			handles: () => handleIsOpen(id),
 		},
-
-		{
-			id: "3",
-			name: "done",
-			size: 14,
-			handles: () => handleIsModal(id),
-		},
 	];
 
 	const wrapperClassName = useMemo(
