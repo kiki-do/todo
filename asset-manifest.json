@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kiki-do/todo.git/static/css/main.15cdbe0c.css",
-    "main.js": "/kiki-do/todo.git/static/js/main.a25a4d70.js",
+    "main.js": "/kiki-do/todo.git/static/js/main.ac13d661.js",
     "static/js/787.84b53ab9.chunk.js": "/kiki-do/todo.git/static/js/787.84b53ab9.chunk.js",
     "static/media/remove.svg": "/kiki-do/todo.git/static/media/remove.268813c81b8a5a6f8d153fe107c18c69.svg",
     "static/media/edit.svg": "/kiki-do/todo.git/static/media/edit.ecdbb997ccafe1a8cfb5ac9adc5a1cb3.svg",
@@ -9,11 +9,11 @@
     "index.html": "/kiki-do/todo.git/index.html",
     "static/media/trash.svg": "/kiki-do/todo.git/static/media/trash.b955ecd4db1f42234eb15b4a3a054ab6.svg",
     "main.15cdbe0c.css.map": "/kiki-do/todo.git/static/css/main.15cdbe0c.css.map",
-    "main.a25a4d70.js.map": "/kiki-do/todo.git/static/js/main.a25a4d70.js.map",
+    "main.ac13d661.js.map": "/kiki-do/todo.git/static/js/main.ac13d661.js.map",
     "787.84b53ab9.chunk.js.map": "/kiki-do/todo.git/static/js/787.84b53ab9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.15cdbe0c.css",
-    "static/js/main.a25a4d70.js"
+    "static/js/main.ac13d661.js"
   ]
 }
