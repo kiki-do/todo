@@ -6,8 +6,10 @@ import classes from "./CardItem.module.scss";
 
 interface CardItemProps {
 	id: string;
+	title: string;
 	text: string;
 	stage: string;
+	order: string;
 	handleDeletePost: (id: string) => void;
 	handleIsOpen: (id: string) => void;
 	handleIsModal: (id: string) => void;
@@ -24,7 +26,9 @@ export interface IIcons {
 
 export const CardItem: CardItemComponent = ({
 	id,
+	title,
 	text,
+	order,
 	stage,
 	handleDeletePost,
 	handleIsOpen,
@@ -50,8 +54,11 @@ export const CardItem: CardItemComponent = ({
 		() =>
 			clsx(classes.wrapper, {
 				[classes.complete]: stage === "done",
+				[classes.low]: order === "low",
+				[classes.medium]: order === "medium",
+				[classes.high]: order === "high",
 			}),
-		[stage]
+		[stage, order]
 	);
 
 	const dragStarted = (e: any, id: string) => {
@@ -66,6 +73,7 @@ export const CardItem: CardItemComponent = ({
 			draggable
 			onDragStart={e => dragStarted(e, id)}
 		>
+			<div className={classes.title}>{title}</div>
 			<div className={classes.text}>{text}</div>
 			{icons.map(({ id, name, size, handles }: IIcons) => (
 				/* Исправить тип для масива объектов */

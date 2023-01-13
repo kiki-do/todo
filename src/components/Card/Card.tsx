@@ -77,12 +77,22 @@ const Card: FC = () => {
 					>
 						{data &&
 							data.map(
-								({ id, text, isOpen, stage, isModal }: DataItems) =>
+								({
+									id,
+									text,
+									isOpen,
+									stage,
+									isModal,
+									title,
+									order,
+								}: DataItems) =>
 									stage === item.stage && (
 										<div key={id} className={classes.content}>
 											<CardItem
+												title={title}
 												text={text}
 												id={id}
+												order={order}
 												handleDeletePost={handleDeletePost}
 												handleIsOpen={handleIsOpen}
 												handleIsModal={handleIsModal}

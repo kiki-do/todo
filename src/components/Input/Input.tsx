@@ -8,24 +8,32 @@ import { useAppDispatch } from "../../hooks/useAppDispatch";
 export const Input: FC = () => {
 	const dispatch = useAppDispatch();
 	const [newPost, setNewPost] = useState<string>("");
+	const [newTitle, setNewTitle] = useState<string>("");
 
 	const handleAddPost = async () => {
-		if (newPost) {
+		if (newPost || newTitle) {
 			dispatch(
 				addPost({
 					id: Date.now().toString(),
+					title: newTitle,
 					text: newPost,
 					isOpen: false,
 					isModal: false,
 					stage: "start",
+					order: "low",
 				})
 			);
 
 			setNewPost("");
+			setNewTitle("");
 		}
 	};
 
-	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const onChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewTitle(e.target.value);
+	};
+
+	const onChangePost = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewPost(e.target.value);
 	};
 
@@ -34,9 +42,17 @@ export const Input: FC = () => {
 			<input
 				className={classes.input}
 				type="text"
+				placeholder="Write here you title!"
+				value={newTitle}
+				onChange={onChangeTitle}
+			/>
+
+			<input
+				className={classes.input}
+				type="text"
 				placeholder="Write here you todo!"
 				value={newPost}
-				onChange={onChange}
+				onChange={onChangePost}
 			/>
 			<Button onClick={handleAddPost}>Add post</Button>
 		</div>

@@ -58,6 +58,18 @@
 			}
 		}
 
+		&.low {
+			box-shadow: 10px 10px 10px rgba($color: #35ac45, $alpha: 0.8);
+		}
+
+		&.medium {
+			box-shadow: 10px 10px 10px rgba($color: #dd9c0f, $alpha: 0.8);
+		}
+
+		&.high {
+			box-shadow: 10px 10px 10px rgba($color: #cf130c, $alpha: 0.8);
+		}
+
 		&.isDelete {
 			animation-duration: 1s;
 			animation-name: delete;

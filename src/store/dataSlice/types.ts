@@ -5,8 +5,10 @@ export interface IData {
 
 export type DataItems = {
 	id: string;
+	title: string;
 	text: string;
 	stage: string;
+	order: string;
 	isOpen: boolean;
 	isModal: boolean;
 };
