@@ -8,7 +8,7 @@ export type DataItems = {
 	title: string;
 	text: string;
 	stage: string;
-	order: string;
+	order: number;
 	isOpen: boolean;
 	isModal: boolean;
 };

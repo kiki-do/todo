@@ -1,9 +1,10 @@
-import { getDataFromLS } from "../../shared/getDataFromLS/getDataFromLS";
 import type { DataItems, IData } from "./types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+const LS_DATA_KEY = "ldk";
+
 const initialState: IData = {
-	data: getDataFromLS(),
+	data: JSON.parse(localStorage.getItem(LS_DATA_KEY) ?? "[]"),
 	status: "loading",
 };
 
@@ -13,16 +14,19 @@ const dataSlice = createSlice({
 	reducers: {
 		setData: (state, action: PayloadAction<DataItems[]>) => {
 			state.data = action.payload;
+			localStorage.setItem(LS_DATA_KEY, JSON.stringify(state.data));
 		},
 
 		addPost: (state, action: PayloadAction<DataItems>) => {
 			state.data.push(action.payload);
+			localStorage.setItem(LS_DATA_KEY, JSON.stringify(state.data));
 		},
 
 		removePost: (state, action: PayloadAction<string>) => {
 			state.data = state.data.filter(
 				(item: DataItems) => item.id !== action.payload
 			);
+			localStorage.setItem(LS_DATA_KEY, JSON.stringify(state.data));
 		},
 
 		stagePost: (
@@ -35,6 +39,7 @@ const dataSlice = createSlice({
 					item.id = action.payload.id;
 				}
 			});
+			localStorage.setItem(LS_DATA_KEY, JSON.stringify(state.data));
 		},
 
 		updatePost: (
@@ -47,6 +52,7 @@ const dataSlice = createSlice({
 					item.isOpen = !item.isOpen;
 				}
 			});
+			localStorage.setItem(LS_DATA_KEY, JSON.stringify(state.data));
 		},
 
 		isOpenPost: (state, action: PayloadAction<string>) => {
@@ -58,42 +64,15 @@ const dataSlice = createSlice({
 			}
 		},
 
-		isModalPost: (state, action: PayloadAction<string>) => {
-			const modal = state.data.find(
-				(item: DataItems) => item.id === action.payload
-			);
-			if (modal) {
-				modal.isModal = !modal.isModal;
-			}
-		},
-
-		// togglePost: (state, action: PayloadAction<string>) => {
-		// 	const index = state.data.find(
+		// isModalPost: (state, action: PayloadAction<string>) => {
+		// 	const modal = state.data.find(
 		// 		(item: DataItems) => item.id === action.payload
 		// 	);
-		// 	if (index) {
-		// 		index.complete = !index.complete;
+		// 	if (modal) {
+		// 		modal.isModal = !modal.isModal;
 		// 	}
 		// },
 	},
-	// extraReducers: builder => {
-	// 	builder.addCase(fetchData.pending, state => {
-	// 		state.status = "loading";
-	// 		state.data = [];
-	// 	});
-
-	// 	builder.addCase(
-	// 		fetchData.fulfilled,
-	// 		(state, action: PayloadAction<DataItems[]>) => {
-	// 			state.status = "success";
-	// 			state.data = action.payload;
-	// 		}
-	// 	);
-	// 	builder.addCase(fetchData.rejected, state => {
-	// 		state.status = "error";
-	// 		state.data = [];
-	// 	});
-	// },
 });
 
 export const {
@@ -103,7 +82,6 @@ export const {
 	updatePost,
 	isOpenPost,
 	stagePost,
-	isModalPost,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

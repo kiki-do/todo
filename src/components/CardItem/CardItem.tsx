@@ -9,10 +9,9 @@ interface CardItemProps {
 	title: string;
 	text: string;
 	stage: string;
-	order: string;
+	order: number;
 	handleDeletePost: (id: string) => void;
 	handleIsOpen: (id: string) => void;
-	handleIsModal: (id: string) => void;
 }
 
 export interface CardItemComponent extends FC<CardItemProps> {}
@@ -31,8 +30,8 @@ export const CardItem: CardItemComponent = ({
 	order,
 	stage,
 	handleDeletePost,
+
 	handleIsOpen,
-	handleIsModal,
 }) => {
 	/* Значения для кнопок иконок */
 	const icons: IIcons[] = [
@@ -54,9 +53,9 @@ export const CardItem: CardItemComponent = ({
 		() =>
 			clsx(classes.wrapper, {
 				[classes.complete]: stage === "done",
-				[classes.low]: order === "low",
-				[classes.medium]: order === "medium",
-				[classes.high]: order === "high",
+				[classes.low]: order === 1,
+				[classes.medium]: order === 2,
+				[classes.high]: order === 3,
 			}),
 		[stage, order]
 	);
@@ -73,7 +72,9 @@ export const CardItem: CardItemComponent = ({
 			draggable
 			onDragStart={e => dragStarted(e, id)}
 		>
-			<div className={classes.title}>{title}</div>
+			<div className={classes.title} data-content-editable-leaf="true">
+				{title}
+			</div>
 			<div className={classes.text}>{text}</div>
 			{icons.map(({ id, name, size, handles }: IIcons) => (
 				/* Исправить тип для масива объектов */

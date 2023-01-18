@@ -8,13 +8,9 @@ import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { dataSelector } from "../../store/dataSlice/selectors";
 import type { DataItems } from "../../store/dataSlice/types";
-import {
-	isModalPost,
-	isOpenPost,
-	removePost,
-	stagePost,
-} from "../../store/dataSlice/slice";
-import { Modal } from "../Modal/Modal";
+import { isOpenPost, removePost, stagePost } from "../../store/dataSlice/slice";
+import { Modal } from "../../shared/components/Modal/Modal";
+import { Button } from "../../shared/components/Button/Button";
 
 export interface fieldsType {
 	id: number;
@@ -42,7 +38,7 @@ const Card: FC = () => {
 
 	const handleIsOpen = (id: string) => dispatch(isOpenPost(id));
 
-	const handleIsModal = (id: string) => dispatch(isModalPost(id));
+	// const handleIsModal = (id: string) => dispatch(isModalPost(id));
 
 	const fields: fieldsType[] = [
 		{ id: 1, stage: "start" },
@@ -91,11 +87,10 @@ const Card: FC = () => {
 											<CardItem
 												title={title}
 												text={text}
-												id={id}
 												order={order}
+												id={id}
 												handleDeletePost={handleDeletePost}
 												handleIsOpen={handleIsOpen}
-												handleIsModal={handleIsModal}
 												stage={stage}
 											/>
 

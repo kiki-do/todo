@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { FC } from "react";
 import Card from "../../components/Card/Card";
-import { Input } from "../../components/Input/Input";
+import { AddPost } from "../../components/AddPost/AddPost";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import classes from "./Home.module.scss";
 import { fetchData } from "../../store/thunk/thunk";
 
 export const Home: FC = () => {
 	const dispatch = useAppDispatch();
+	const [isModal, setIsModal] = useState(false);
 
 	useEffect(() => {
 		dispatch(fetchData());
@@ -22,7 +23,7 @@ export const Home: FC = () => {
 			<h2 className={classes.subtitle}> List of todos </h2>
 			<Card />
 			<div className={classes.input}>
-				<Input />
+				<AddPost isModal={isModal} setIsModal={setIsModal} />
 			</div>
 		</div>
 	);
